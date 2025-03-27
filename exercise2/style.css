@@ -1,7 +1,15 @@
 body {
-	display: block;
-	justify-items: center;
-	align-content: center;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	height: 100vh;
+}
+
+.calculator {
+	border-radius: 10px;
+	padding: 20px;
+	box-shadow: 6px 4px 10px;
+	text-align: center;
 }
 input {
 	display: block;
@@ -15,13 +23,15 @@ input {
 .operators button {
 	background-color: grey;
 	color: white;
-	font-size: large;
+	width: 30px;
+	height: 30px;
 	margin: 3px;
 }
 
 .reset button {
 	background-color: orange;
 	color: antiquewhite;
-	font-size: x-large;
+	width: 40px;
+	height: 40px;
 	margin: 3px;
 }
