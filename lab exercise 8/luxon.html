@@ -1,0 +1,79 @@
+<html>
+	<head>
+		<title>Luxon DateTime Formatting</title>
+		<script src="https://cdn.jsdelivr.net/npm/luxon@3.6.0/build/global/luxon.min.js"></script>
+		<!-- reference Luxon library -->
+	</head>
+	<body>
+		<h2>Luxon Date</h2>
+		<!-- container for Luxon output -->
+		<div id="displayLuxon"></div>
+		<div id="daysDifference">Question 1</div>
+		<div id="detailedDifference">Question 2</div>
+		<div id="closest">Question 3</div>
+		<div id="dayClosest">Question 3</div>
+		<div id="londonTime">Question 3</div>
+		<script type="text/javascript">
+			(function () {
+				// create a shortcut and a new Luxon date
+				const DateTime = luxon.DateTime;
+				let nowLuxon = DateTime.now();
+				const birthDate = DateTime.fromISO("1987-09-05");
+				const daysBetween = birthDate.diff(nowLuxon, "days").days;
+				const diff = birthDate
+					.until(nowLuxon)
+					.toDuration(["years", "months", "days"]);
+				const date1 = DateTime.fromISO("2025-09-05");
+				const date2 = DateTime.fromISO("2025-10-05");
+				const diff1 = Math.abs(date1.diff(nowLuxon, "days").days);
+				const diff2 = Math.abs(date2.diff(nowLuxon, "days").days);
+				const closestDate = diff1 < diff2 ? date1 : date2;
+				const londonTime = nowLuxon
+					.setZone("Europe/London")
+					.toLocaleString(DateTime.DATETIME_FULL);
+				//Question1
+				document.getElementById(
+					"daysDifference"
+				).innerText = `Days between my birthdate and current date: ${Math.abs(
+					Math.round(daysBetween)
+				)} days`;
+
+				//Question 2
+				document.getElementById(
+					"detailedDifference"
+				).innerText = `I am ${Math.abs(
+					Math.floor(diff.years)
+				)} years, ${Math.abs(Math.floor(diff.months))} months, and ${Math.abs(
+					Math.floor(diff.days)
+				)} days old.`;
+
+				//Question3
+				document.getElementById(
+					"closest"
+				).innerText = `Closest date from today is ${closestDate.toFormat(
+					`MMMM dd, yyyy`
+				)}`;
+
+				//Question4
+				if (diff1 < diff2) {
+					document.getElementById(
+						"dayClosest"
+					).innerText = `Date1 is the closest which is ${date1.toFormat(
+						`MMMM dd, yyyy`
+					)}`;
+				} else {
+					document.getElementById(
+						"dayClosest"
+					).innerText = `Date2 is the closest which is ${date2.toFormat(
+						`MMMM dd, yyyy`
+					)}`;
+				}
+
+				//Question5
+				document.getElementById(
+					"londonTime"
+				).innerText = `The time in London is ${londonTime}`;
+			})();
+		</script>
+	</body>
+</html>
