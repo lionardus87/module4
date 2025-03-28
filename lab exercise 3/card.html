@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Calculator</title>
+		<link rel="stylesheet" href="style.css" />
+	</head>
+	<body>
+		<template id="card-template">
+			<div class="card">
+				<div class="card-body">
+					<div class="card-name"></div>
+					<div class="card-title"></div>
+					<img class="card-image" src="" alt="Artwork" />
+				</div>
+			</div>
+		</template>
+
+		<div id="card-list"></div>
+
+		<button
+			onclick="addCard()"
+			style="background-color: blue; color: white; width: 200px; height: 25px"
+		>
+			Add card
+		</button>
+		<script src="card.js"></script>
+	</body>
+</html>

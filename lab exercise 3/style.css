@@ -1,0 +1,21 @@
+body {
+	font-family: Arial, Helvetica, sans-serif;
+	background-color: #e3f2fd;
+}
+.card {
+	padding: 10px;
+}
+.card-name {
+	font-weight: 600;
+	font-size: 3em;
+	padding: 0 0 10px 0;
+}
+.card-title {
+	font-weight: 300;
+	font-size: 2em;
+	padding: 0 0 10px 0;
+}
+.card-description {
+	font-weight: 400;
+	font-size: 2em;
+}
