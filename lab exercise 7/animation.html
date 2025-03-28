@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<title>CSS Animation</title>
+		<style>
+			.card {
+				animation-name: slidein;
+				animation-duration: 5s;
+				animation-iteration-count: infinite;
+				border: 1px solid;
+			}
+			.card img {
+				height: 150px;
+				width: 100%;
+			}
+			@keyframes slidein {
+				from {
+					margin-bottom: 100%;
+				}
+				50% {
+					margin-top: 70%;
+				}
+				to {
+					margin-bottom: 100%;
+				}
+			}
+		</style>
+	</head>
+	<body>
+		<div class="card" style="width: 18rem">
+			<img
+				src="https://media.istockphoto.com/id/686552532/photo/sunset-over-the-sea-cliff-bridge-along-australian-pacific-ocean-coast-with-lights-of-passing.jpg?s=612x612&w=0&k=20&c=GVhn5E5YrdCVVAgwgSD2b8misMFc7tkB9kL4-13fi7I="
+				class="card-img-top"
+				alt="Sunset over the Sea cliff bridge along Australian Pacific ocean coast with lights of passing cars near Sydney, Australia. Long exposure."
+			/>
+			<div class="card-body">
+				<h5 class="card-title">Sea Cliff Bridge</h5>
+				<p class="card-text">
+					Sunset over the Sea cliff bridge along Australian Pacific ocean coast
+					with lights of passing cars near Sydney, Australia. Long exposure.
+				</p>
+				<a
+					href="https://www.visitnsw.com/destinations/south-coast/wollongong-and-surrounds/stanwell-park/attractions/sea-cliff-bridge"
+					class="btn btn-primary"
+					>More Info</a
+				>
+			</div>
+		</div>
+	</body>
+</html>
