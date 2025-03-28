@@ -3,28 +3,38 @@
 	<head>
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-		<title>Calculator</title>
+		<title>Card</title>
 		<link rel="stylesheet" href="style.css" />
 	</head>
 	<body>
+		<div class="buttonLoc">
+			<button onclick="addCard()">Add card</button>
+		</div>
+
 		<template id="card-template">
-			<div class="card">
+			<!-- <div class="card">
 				<div class="card-body">
 					<div class="card-name"></div>
 					<div class="card-title"></div>
 					<img class="card-image" src="" alt="Artwork" />
 				</div>
+			</div> -->
+			<div class="card">
+				<div class="card-header">
+					<h3 class="card-name"></h3>
+					<h4 class="card-age"></h4>
+					<h4 class="card-loc"></h4>
+				</div>
+
+				<img class="card-image" src="" alt="Artwork" />
+				<div class="card-body">
+					<h5 class="card-title"></h5>
+					<p class="card-desc"></p>
+				</div>
 			</div>
 		</template>
 
 		<div id="card-list"></div>
-
-		<button
-			onclick="addCard()"
-			style="background-color: blue; color: white; width: 200px; height: 25px"
-		>
-			Add card
-		</button>
-		<script src="card.js"></script>
 	</body>
+	<script src="card.js"></script>
 </html>
