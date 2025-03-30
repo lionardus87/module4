@@ -1,0 +1,65 @@
+<html>
+	<head>
+		<title>Moment.js DateTime Formatting</title>
+		<script src="https://cdn.jsdelivr.net/npm/moment@2.30.1/moment.min.js"></script>
+		<script src="https://cdn.jsdelivr.net/npm/moment-timezone@0.5.40/moment-timezone.min.js"></script>
+	</head>
+	<body>
+		<h2>Moment.js Date</h2>
+		<div id="daysDifference">Question 1</div>
+		<div id="detailedDifference">Question 2</div>
+		<div id="closest">Question 3</div>
+		<div id="dayClosest">Question 3</div>
+		<div id="londonTime">Question 3</div>
+		<script type="text/javascript">
+			(function () {
+				let nowMoment = moment();
+				const birthDate = moment("1987-09-05");
+				const daysBetween = birthDate.diff(nowMoment, "days");
+				const diff = moment.duration(nowMoment.diff(birthDate));
+				const date1 = moment("2025-09-05");
+				const date2 = moment("2025-10-05");
+				const diff1 = Math.abs(date1.diff(nowMoment, "days"));
+				const diff2 = Math.abs(date2.diff(nowMoment, "days"));
+				const closestDate = diff1 < diff2 ? date1 : date2;
+				const londonTime = moment.tz(nowMoment, "Europe/London").format("LLLL");
+
+				document.getElementById(
+					"daysDifference"
+				).innerText = `Days between my birthdate and current date: ${Math.abs(
+					daysBetween
+				)} days`;
+
+				document.getElementById(
+					"detailedDifference"
+				).innerText = `I am ${Math.abs(diff.years())} years, ${Math.abs(
+					diff.months()
+				)} months, and ${Math.abs(diff.days())} days old.`;
+
+				document.getElementById(
+					"closest"
+				).innerText = `Closest date from today is ${closestDate.format(
+					"MMMM DD, YYYY"
+				)}`;
+
+				if (diff1 < diff2) {
+					document.getElementById(
+						"dayClosest"
+					).innerText = `Date1 is the closest which is ${date1.format(
+						"MMMM DD, YYYY"
+					)}`;
+				} else {
+					document.getElementById(
+						"dayClosest"
+					).innerText = `Date2 is the closest which is ${date2.format(
+						"MMMM DD, YYYY"
+					)}`;
+				}
+
+				document.getElementById(
+					"londonTime"
+				).innerText = `The time in London is ${londonTime}`;
+			})();
+		</script>
+	</body>
+</html>
