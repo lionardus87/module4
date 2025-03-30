@@ -32,21 +32,21 @@ function displayProduct(products) {
 }
 function filterCategory() {
 	const categories = document.querySelectorAll(".dropdown-item");
-	console.log(categories);
+	// console.log(categories);
 	categories.forEach((item) => {
 		item.addEventListener("click", function () {
 			const categoryValue = item.getAttribute("value");
 			// console.log(categoryValue);
 			if (categoryValue === "allCategories") {
 				displayProduct(newProducts);
-				console.log(categoryValue);
+				// console.log(categoryValue);
 			} else {
 				const filterProducts = newProducts.filter(
 					(product) =>
 						product.category.toLowerCase() === categoryValue.toLowerCase()
 				);
 				displayProduct(filterProducts);
-				console.log(filterProducts);
+				// console.log(filterProducts);
 			}
 		});
 	});

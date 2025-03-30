@@ -4,24 +4,50 @@ let news = [
 	{ id: 3, title: "Tornado Warning", content: "Residents should prepare..." },
 ];
 
+let intervalId;
+
 function updateNews() {
-	const template = document.getElementById("newsContainer");
 	// template.innerHTML = "";
 	news.forEach((item) => {
-		const article = document.createElement("div");
-		article.classList.add("news-item");
-		article.innerHTML = `<h2>${item.title}</h2><p>${item.content}</p>`;
-		template.appendChild(article);
+		const template = document
+			.getElementById("newsContainer")
+			.content.cloneNode(true);
+		template.querySelector(".card-title").innerText = item.title;
+		template.querySelector(".card-text").innerText = item.content;
+		document.getElementById("news-container").appendChild(template);
 	});
 }
+
 function startNews() {
-	intervalId = setInterval(updateNews, 5000);
+	if (!intervalId) {
+		updateNews();
+		intervalId = setInterval(updateNews, 5000);
+	}
 }
 
 function stopNews() {
 	clearInterval(intervalId);
+	intervalId = null;
+}
+function restartNews() {
+	stopNews();
+	document.getElementById("news-container").innerHTML = "";
+	startNews();
+}
+function addNews() {
+	const title = document.getElementById("newsTitle").value;
+	const content = document.getElementById("newsContent").value;
+	if (title && content) {
+		news.push({ id: news.length + 1, title, content });
+		updateNews();
+		document.getElementById("newsTitle").value = "";
+		document.getElementById("newsContent").value = "";
+	}
 }
 
-startNews();
-
 document.getElementById("stopButton").addEventListener("click", stopNews);
+document.getElementById("startButton").addEventListener("click", startNews);
+document.getElementById("restartButton").addEventListener("click", restartNews);
+document.getElementById("addNewsButton").addEventListener("click", addNews);
+
+startNews();
