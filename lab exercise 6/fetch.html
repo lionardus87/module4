@@ -1,18 +1,26 @@
 <html>
 	<head>
 		<title>JSON Placeholder Axios</title>
+		<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 	</head>
 	<body>
 		<h1>Check the console</h1>
+		
 		<template id="cardPost">
-		<div class="card" style="width: 18rem; border:1px solid;">
+		<div class="card" style="width: 18rem; border:1px solid; padding: 5px;">
 			<h5 class="card-title"></h5>
 			<div class="card-body">
 			  <p class="card-text"></p>
 			</div>
 		  </div>
 		</template>
-		  <div class="card-container" id="card-container" style="display: flex; flex-wrap: wrap;"></div>
+		<div class="card-container" id="card-container" style="display: flex; flex-wrap: wrap;"></div>
+		
+		<form id="fetchForm" >
+			<label for="postLimit">Number of posts:</label>
+			<input type="number" id="postLimit" min="1" max="100" value="10" />
+			<button type="submit">Fetch Posts</button>
+		</form>
 		
 		</body>
 	<script src="fetch.js"></script>
