@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>eCharts</title>
+		<script src="https://cdn.jsdelivr.net/npm/echarts@5.4.1/dist/echarts.min.js"></script>
+	</head>
+	<body>
+		<div id="pieChart" style="width: 100%; height: 600px"></div>
+		<!-- Prepare a DOM with a defined width and height for ECharts -->
+		<div id="main" style="width: 100%; height: 600px"></div>
+		<script type="text/javascript">
+			// Specify the configuration items and data for the chart
+
+			fetch("https://fakestoreapi.com/products")
+				.then((response) => response.json())
+				.then((json) => {
+					// Display the chart
+					const titles = json.map((product) => product.id);
+					const prices = json.map((product) => product.price);
+					const priceBrackets = {
+						"$1-$100": 0,
+						"$100-$250": 0,
+						"$250-$500": 0,
+						"$500-$1000": 0,
+					};
+					json.forEach((product) => {
+						if (product.price <= 100) priceBrackets["$1-$100"]++;
+						else if (product.price <= 250) priceBrackets["$100-$250"]++;
+						else if (product.price <= 500) priceBrackets["$250-$500"]++;
+						else priceBrackets["$500-$1000"]++;
+					});
+					let pieChart = echarts.init(document.getElementById("pieChart"));
+					pieChart.setOption({
+						title: { text: "Product Distribution by Price Brackets" },
+						series: [
+							{
+								type: "pie",
+								data: Object.entries(priceBrackets).map(([key, value]) => ({
+									name: key,
+									value,
+								})),
+							},
+						],
+					});
+				});
+		</script>
+	</body>
+</html>
