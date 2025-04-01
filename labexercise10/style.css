@@ -12,6 +12,11 @@
 .card-body {
 	overflow: scroll;
 }
+
+.card-body p {
+	display: inline;
+}
+
 .item-image {
 	height: 18em;
 	align-items: center;

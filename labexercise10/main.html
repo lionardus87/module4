@@ -9,6 +9,10 @@
 			rel="stylesheet"
 		/>
 		<link rel="stylesheet" href="style.css" />
+		<link
+			rel="stylesheet"
+			href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+		/>
 	</head>
 	<body>
 		<nav class="navbar navbar-expand-lg bg-body-tertiary">
@@ -76,8 +80,25 @@
 							<a class="nav-link disabled" aria-disabled="true">Disabled</a>
 						</li>
 					</ul>
-					<form class="d-flex" role="search">
+					<form
+						class="d-flex"
+						role="search"
+						onsubmit="event.preventDefault(); searchProducts();"
+					>
+						<select
+							id="sortOptions"
+							class="form-select w-auto"
+							onchange="sortProduct()"
+						>
+							<option value="default">Sort By</option>
+							<option value="price-low-high">Price: Low to High</option>
+							<option value="price-high-low">Price: High to Low</option>
+							<option value="title-asc">Title: A to Z</option>
+							<option value="title-desc">Title: Z to A</option>
+						</select>
+
 						<input
+							id="searchInput"
 							class="form-control me-2"
 							type="search"
 							placeholder="Search"
@@ -101,10 +122,15 @@
 					<h4 class="card-price"></h4>
 					<h5 class="card-desc"></h5>
 					<p class="card-category"></p>
+					<p class="card-category-icon"></p>
 				</div>
 			</div>
 		</template>
 	</body>
 	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 	<script src="index.js"></script>
+	<script
+		src="https://kit.fontawesome.com/a076d05399.js"
+		crossorigin="anonymous"
+	></script>
 </html>
